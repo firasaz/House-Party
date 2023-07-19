@@ -2,21 +2,21 @@
 Create a room and play music with all of your friends in one space.
 
 ## Description
-Web application utilizing Django and ReactJS where users authenticate with Spotify and play music with their friends.
+Web application utilizing Django and ReactJS where users authenticate with Spotify and play music with their friends. One member will create the room and be the host of the room. The host have full control over the room and can update settings of the room at any time. Up to 10 friends can join a single room where they can vote to skip a song and play/pause it. Host should have a premium spotify account for full functionalities to work but it is not a requirement.
 
-## Prerequisites
+## Prerequisites:
 - Spotify account (preferably premium account).
 - Python installed on your computer.
 - Pip package manager
 - Pipenv or venv to create your virtual environment (pipenv preferred)
 
-## Installation
+## Installation:
 1. Clone the repo to your local machine
 2. Create virtual environment
 3. cd into the cloned repo then run pipenv install -r requirements
 4. All dependencies should be installed now. Run pipenv shell in the root directory, where Pipfile and Pipfile.lock files should be located.
 5. Now that you entered the virtual environment, cd into src folder and run this command: python manage.py runserver.
-6. Congrats, your done! Open your favorite browser and go to http://127.0.0.1:8000
+6. Congrats, you're done! Open your favorite browser and go to http://127.0.0.1:8000
 
 ## Steps:
 ### Clone Repo:
@@ -51,4 +51,4 @@ cd src
 python manage.py runserver
 ```
 ### Open Web Application
-Congrats, your done! Open your favorite browser and go to http://127.0.0.1:8000
+Congrats, you're done! Open your favorite browser and go to http://127.0.0.1:8000
