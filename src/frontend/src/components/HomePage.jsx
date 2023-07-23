@@ -17,7 +17,7 @@ function HomePage() {
   return roomCode ? ( 
     <Navigate to={`/room/${roomCode}`} /> 
     ) : (
-      <div className='text-xl w-96 mx-auto text-center mt-2 dark:text-white dark:bg-slate-800'>
+      <div className='text-xl w-96 mx-auto text-center h-48 mt-2 dark:text-white dark:bg-slate-800 bg-zinc-50 border rounded-lg border-zinc-300 drop-shadow-md'>
         <h1 className='font-semibold my-2'>House Party</h1>
         <Link 
           className='p-1 bg-sky-300 rounded-sm hover:bg-sky-400 focus:outline-sky-500'

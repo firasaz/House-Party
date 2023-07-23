@@ -71,7 +71,7 @@ function CreateRoom() {
   }
 
   return (
-    <div className='mx-auto mt-2 p-5 w-96 text-xl text-center border-2 shadow-lg'>
+    <div className='mx-auto mt-2 p-5 w-96 text-xl text-center border-2 shadow-lg bg-zinc-50 rounded-lg'>
       <h1 className='font-semibold text-3xl'>{title}</h1>
       <p className='my-2'>Guest Control of Playback State</p>
       <div className="form">

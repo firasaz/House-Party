@@ -55,7 +55,7 @@ function Room() {
 
     useEffect(() => {
         // console.log(`Spotify Authentication Status Inside UseEffect: ${spotifyAuthenticated}`)
-        let interval = setInterval(getCurrentSong, 5000)
+        let interval = setInterval(getCurrentSong, 1000)
         return () => clearInterval(interval)
         // getDummySongData()
     }, [spotifyAuthenticated])

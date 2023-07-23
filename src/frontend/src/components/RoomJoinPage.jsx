@@ -26,7 +26,8 @@ function RoomJoinPage() {
         })
     }
   return (
-    <div className='grid grid-cols-1 w-96 p-5 text-xl text-center mx-auto mt-2 border-2'>
+    <div className=
+    'grid grid-cols-1 w-96 p-5 text-xl text-center mx-auto mt-2 border-2 shadow-lg bg-zinc-50 rounded-lg'>
         <h1 className='text-3xl font-semibold'>Join A Room</h1>
         <input placeholder='Enter a Room Code'
         className='w-56 p-2 mt-4 mx-auto text-center border-2 rounded-md focus:outline-none focus:border-blue-800'
