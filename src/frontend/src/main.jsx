@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path='/' element={ <HomePage /> } />
           <Route path='/create-room' element={ <CreateRoom /> } />
-          <Route path='/room/:roomCode' element={ <Room />} />
+          <Route path='/room/:roomCode' element={ <Room baseUrl='http://127.0.0.1:8000' />} />
           <Route path='/join' element={ <RoomJoinPage /> } />
         </Routes>
       </Router>

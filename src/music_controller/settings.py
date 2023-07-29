@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-p*b+c&$)$wd^8-fa*a)j!h&fkyqj1bei-_^6v1c!cb-4thk=g&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '192.168.100.6',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -136,4 +140,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # need to add the django-cors-headers package in the settings as an app + add it in the middleware
 # this is done by adding 'corsheaders' under installed apps then this should work
-CORS_ORIGIN_WHITELIST = ['http://localhost:5173']
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
+    'http://192.168.100.6:8000',
+    'http://127.0.0.1:8000',
+    'http://0.0.0.0:8000'
+
+    ]

@@ -5,7 +5,7 @@ import axios from 'axios'
 import MusicPlayer from './MusicPlayer'
 import Swal from 'sweetalert2'
 
-function Room() {
+function Room({baseUrl}) {
     const [votes, setVotes] = useState()
     const [guestsControl, setGuestControl] = useState()
     const [isHost, setIsHost] = useState()
@@ -22,7 +22,7 @@ function Room() {
 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/room/?code=${roomCode}`)
+        axios.get(`${baseUrl}/api/room/?code=${roomCode}`)
         .then((res) => {
             if(res.status === 200) {
                 setVotes(res.data.votes_to_skip)
@@ -132,7 +132,8 @@ function Room() {
                 } )
             })
         }
-        navigate('/')
+        fetch('/api/leave/')
+        .then(() => navigate('/'))
     }    
     return (
         <div className='mx-auto text-xl w-1/3 text-center m-2 grid grid-cols-1 border bg-zinc-100 rounded-lg border-zinc-300 drop-shadow-xl'>
