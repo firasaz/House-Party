@@ -25,7 +25,7 @@ git clone https://github.com/firasaz/House-Party.git
 cd House-Party
 ```
 ### Create Virtual Environment:
-- **Python Venv Module:**
+1. **Python Venv Module:**
 Run these commands in the root folder of the project.
 ```
 # Create virtual environment
@@ -35,7 +35,7 @@ python -m venv venv
 # Install dependencies
 pip install -r requirements.txt
 ```
-- **Pipenv Virtual Environment:**
+2. **Pipenv Virtual Environment:**
 ```
 # Install pipenv
 pip install pipenv
