@@ -46,7 +46,7 @@ function MusicPlayer(props) {
     return props.song.title ? (
         <div>
             <div className='grid grid-cols-3 place-items-center w-full bg-gray-200 m-0'>
-                <div className='col-span-1 bg-cover bg-center bg-contain'>
+                <div className='col-span-1 bg-center bg-contain'>
                     <img className='bg-cover w-full h-full' src={props.song?.images_urls?.med_img.url} alt='album cover' />
                 </div>
                 <div className='col-span-2'>
