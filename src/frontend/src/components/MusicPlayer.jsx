@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function MusicPlayer(props) {
-    const [errorMsg, setErrorMsg] = useState('')
+    const [resMsg, setResMsg] = useState('')
     const timestamp = (props.song.timestamp_ms / props.song.duration_ms) * 100
     
     const controlSong = (e) => {
@@ -15,10 +15,34 @@ function MusicPlayer(props) {
         fetch('/spotify/control/', requestOptions)
         .then((res) => {
             if(!res.ok) {
-                setErrorMsg('Oops...Something Went Wrong :(')
+                setResMsg('Oops...Something Went Wrong :(')
             }
         })
     }
+    const pauseSong = () => {
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+        }
+        fetch('/spotify/pause/', requestOptions)
+        .then((res) => {
+            if(!res.ok) setResMsg('Oops...Something went wrong :(')
+            else setResMsg(res?.message)
+
+        })
+    }
+    const playSong = () => {
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+        }
+        fetch('/spotify/play/', requestOptions)
+        .then((res) => {
+            if(!res.ok) setResMsg('Oops...Something went wrong :(')
+            else setResMsg(res?.message)
+        })
+    }
+    
     return props.song.title ? (
         <div>
             <div className='grid grid-cols-3 place-items-center w-full bg-gray-200 m-0'>
@@ -34,11 +58,11 @@ function MusicPlayer(props) {
                         </button>
                         <button 
                             className='my-2'
-                            onClick={controlSong}
+                            // onClick={controlSong}
                         >
                             {props.song?.is_playing ? 
-                                <span className="material-symbols-outlined text-3xl" id='pause'>pause_circle</span> :
-                                <span className="material-symbols-outlined text-3xl" id='play'>play_circle</span>
+                                <span className="material-symbols-outlined text-3xl" id='pause' onClick={pauseSong}>pause_circle</span> :
+                                <span className="material-symbols-outlined text-3xl" id='play' onClick={playSong}>play_circle</span>
                             }
                         </button>
                         <button>
@@ -50,6 +74,7 @@ function MusicPlayer(props) {
             <div className="timestamp">
                 <progress max={props.song.duration_ms} value={props.song.timestamp_ms} className='w-full' />
             </div>
+            <div>{resMsg}</div>
         </div>
     ) : (
         <div className='text-red-700 my-2 p-1 bg-red-100'>

@@ -20,7 +20,7 @@ load_dotenv()
 class AuthUrl(APIView):
     def get(self, request, format=None):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
-        print(os.getenv('REDIRECT_URI'))
+        # print(os.getenv('REDIRECT_URI'))
 
         # the following generates the URL that sends a request to spotify to access permissions specified in the 
         # 'scopes' above which spotify then displays a window to the user informing him of myh application's 
@@ -49,9 +49,9 @@ def spotify_callback(request, format=None):
         'client_secret': os.getenv('CLIENT_SECRET'),
         'redirect_uri': os.getenv('REDIRECT_URI')
     }).json()
-    print(response)
+    # print(response)
     if 'error' in response or 'access_token' not in response:
-        print(response)
+        # print(response)
         return JsonResponse(response)
 
     access_token = response.get('access_token')
@@ -69,7 +69,7 @@ def spotify_callback(request, format=None):
 class IsAuthenticated(APIView):
     def get(self, request):
         is_authenticated = is_spotify_authenticated(self.request.session.session_key)
-        print(is_authenticated)
+        # print(is_authenticated)
         return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
 
 class CurrentSong(APIView):
@@ -141,3 +141,23 @@ def tokens_db(request):
     tokens = SpotifyTokens.objects.all()
     serializer = TokensSerializer(tokens, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+class PlaySong(APIView):
+    def put(self, response, format=None):
+        room_code = self.request.session.get('room_code')
+        room = Room.objects.filter(code=room_code)[0]
+        if self.request.session.session_key == room.host or room.guest_can_pause:
+            play_song(room.host)
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        return Response(response['error'], status=status.HTTP_403_FORBIDDEN)
+
+class PauseSong(APIView):
+    def put(self, response, format=None):
+        room_code = self.request.session.get('room_code')
+        room = Room.objects.filter(code=room_code)[0]
+        if self.request.session.session_key == room.host or room.guest_can_pause:
+            response = pause_song(room.host)
+            return Response(response['error'], status=status.HTTP_204_NO_CONTENT)
+            
+        return Response(response['error'], status=status.HTTP_403_FORBIDDEN)

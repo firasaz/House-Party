@@ -9,5 +9,8 @@ urlpatterns = [
     path('current-song/', CurrentSong.as_view()),
     path('control/', PlaySong.as_view()),
     path('delete-token/', delete_tokens),
-    path('tokens/', tokens_db)
+    path('tokens/', tokens_db),
+
+    path('play/', PlaySong.as_view()),
+    path('pause/', PauseSong.as_view())
 ]
