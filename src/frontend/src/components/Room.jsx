@@ -136,25 +136,27 @@ function Room({baseUrl}) {
         .then(() => navigate('/'))
     }    
     return (
-        <div className='mx-auto text-xl w-1/3 text-center m-2 grid grid-cols-1 border bg-zinc-100 rounded-lg border-zinc-300 drop-shadow-xl'>
-            <h1 className='text-3xl text-green-600'><span className='font-semibold text-black'>Room Code:</span> {roomCode}</h1>
-            <p className='mt-5'><span className='font-semibold'>Votes To Skip:</span> {votes}</p>
-            <p className='mt-5'><span className='font-semibold'>Guests Can Pause:</span> {guestsControl?.toString()}</p>
-            <p className='my-5'><span className='font-semibold'>Is This The Host:</span> {isHost?.toString()}</p>
-            <MusicPlayer song={song} />
-            <Link 
-                to='/create-room'
-                state={roomData}
-                className={isHost ? 'p-2 bg-blue-700 text-white font-medium rounded-md hover:bg-blue-800 w-44 mx-auto' : 'hidden'}
-            >
-                Settings
-            </Link>
-            <button 
-                className='p-2 bg-rose-600 text-white font-medium rounded-md hover:bg-rose-700 w-52 mx-auto my-4' 
-                onClick={leaveRoom}
-            >
-                Leave Room
-            </button>
+        <div className="h-screen flex justify-center items-center">
+            <div className='py-5 mx-auto text-xl w-1/3 text-center m-2 grid grid-cols-1 border bg-zinc-100 rounded-lg border-zinc-300 drop-shadow-xl h-fit'>
+                <h1 className='text-3xl text-green-600'><span className='font-semibold text-black'>Room Code:</span> {roomCode}</h1>
+                <p className='mt-5'><span className='font-semibold'>Votes To Skip:</span> {votes}</p>
+                <p className='mt-5'><span className='font-semibold'>Guests Can Pause:</span> {guestsControl?.toString()}</p>
+                <p className='my-5'><span className='font-semibold'>Is This The Host:</span> {isHost?.toString()}</p>
+                <MusicPlayer song={song} />
+                <Link
+                    to='/create-room'
+                    state={roomData}
+                    className={isHost ? 'p-2 bg-blue-700 text-white font-medium rounded-md hover:bg-blue-800 w-44 mx-auto' : 'hidden'}
+                >
+                    Settings
+                </Link>
+                <button
+                    className='p-2 bg-rose-600 text-white font-medium rounded-md hover:bg-rose-700 w-52 mx-auto mt-4'
+                    onClick={leaveRoom}
+                >
+                    Leave Room
+                </button>
+            </div>
         </div>
     )
 }
